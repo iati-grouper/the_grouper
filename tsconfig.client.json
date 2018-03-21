@@ -4,6 +4,7 @@
     "module": "commonjs",
     "lib": ["es2015", "dom"],
     "jsx": "react",
+    "noImplicitAny": false,                 /* Raise error on expressions and declarations with an implied 'any' type. */
     "strict": true
   },
   "include": [
