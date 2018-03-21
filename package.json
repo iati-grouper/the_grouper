@@ -32,6 +32,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "webpack --mode development",
-    "build:prod": "webpack --mode production"
+    "build:prod": "webpack --mode production",
+    "db": "json-server --watch ./db/db.json --port 3004"
   }
 }
