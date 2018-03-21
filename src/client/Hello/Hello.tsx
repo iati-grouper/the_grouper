@@ -1,5 +1,4 @@
 import * as React from 'react';
+import Students from '../components/Students';
 
-export interface IHelloProps { compiler: string; framework: string; }
-
-export const Hello = (props: IHelloProps) => <h1>Hello from {props.compiler} and {props.framework}!</h1>;
+export const Hello = () => <h1><Students/></h1>;

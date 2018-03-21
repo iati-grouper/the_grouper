@@ -5,6 +5,6 @@ import './index.scss';
 import { Hello } from './Hello/Hello';
 
 ReactDOM.render(
-  <Hello compiler="TypeScript" framework="React" />,
+  <Hello/>,
   document.getElementById('target'),
 );
