@@ -17,7 +17,7 @@ class GroupFormRoute {
       const query: IGrouperQuery = req.body.groupQuery;
 
       const requestOptions: http.RequestOptions = {
-        host: '169.254.174.142',
+        host: 'localhost',
         method: 'POST',
         path: '/grouper',
         port: 5000,
