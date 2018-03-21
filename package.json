@@ -19,6 +19,7 @@
     "@types/react-dom": "^16.0.4",
     "awesome-typescript-loader": "^4.0.1",
     "css-loader": "^0.28.11",
+    "json-server": "^0.12.1",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.7",
     "source-map-loader": "^0.2.3",
