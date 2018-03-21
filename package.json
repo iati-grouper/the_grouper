@@ -1,0 +1,20 @@
+{
+  "name": "the_grouper",
+  "version": "1.0.0",
+  "description": "IATI Hackathon Project The Grouper",
+  "main": "index.ts",
+  "repository": "https://github.com/iati-grouper/the_grouper.git",
+  "author": "Can Nahum <can_nahum@intuit.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "ts-node": "^5.0.1",
+    "typeorm": "^0.1.16"
+  },
+  "devDependencies": {
+    "typescript": "^2.7.2"
+  },
+  "scripts": {
+    "start": "ts-node index.ts"
+  }
+}
