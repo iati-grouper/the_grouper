@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import './index.scss';
 
-import { Hello } from './Hello/Hello';
+import App from './App';
 
 ReactDOM.render(
-  <Hello/>,
+  <App />,
   document.getElementById('target'),
 );
