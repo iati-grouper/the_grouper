@@ -1,0 +1,32 @@
+{
+  "students": [
+    { "id": 1, "name": "student 1" },
+    { "id": 2, "name": "student 2" },
+    { "id": 3, "name": "student 3" },
+    { "id": 4, "name": "student 4" },
+    { "id": 5, "name": "student 5" },
+    { "id": 6, "name": "student 6" },
+    { "id": 7, "name": "student 7" },
+    { "id": 8, "name": "student 8" },
+    { "id": 9, "name": "student 9" },
+    { "id": 10, "name": "student 10" }
+  ],
+  "groups": [
+    { "id": 1, "name": "some group" },
+    { "id": 2, "name": "2nd group" }
+  ],
+  "groupsHistory": [
+    { "groupId": 1, "studentId": 1 },
+    { "groupId": 1, "studentId": 2 },
+    { "groupId": 2, "studentId": 3 },
+    { "groupId": 2, "studentId": 4 },
+    { "groupId": 3, "studentId": 5 },
+    { "groupId": 3, "studentId": 6 },
+    { "groupId": 4, "studentId": 7 },
+    { "groupId": 4, "studentId": 8 }
+  ],
+  "profiles": [
+    { "id": 1, "type": "academic" },
+    { "id": 2, "type": "gym"}
+  ]
+}
