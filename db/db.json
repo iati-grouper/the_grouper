@@ -1,15 +1,15 @@
 {
   "students": [
-    { "id": 1, "name": "student 1" },
-    { "id": 2, "name": "student 2" },
-    { "id": 3, "name": "student 3" },
-    { "id": 4, "name": "student 4" },
-    { "id": 5, "name": "student 5" },
-    { "id": 6, "name": "student 6" },
-    { "id": 7, "name": "student 7" },
-    { "id": 8, "name": "student 8" },
-    { "id": 9, "name": "student 9" },
-    { "id": 10, "name": "student 10" }
+    { "id": 1, "name": "student 1", "url": "https://robohash.org/1.png" },
+    { "id": 2, "name": "student 2", "url": "https://robohash.org/2.png" },
+    { "id": 3, "name": "student 3", "url": "https://robohash.org/3.png" },
+    { "id": 4, "name": "student 4", "url": "https://robohash.org/4.png" },
+    { "id": 5, "name": "student 5", "url": "https://robohash.org/5.png" },
+    { "id": 6, "name": "student 6", "url": "https://robohash.org/6.png" },
+    { "id": 7, "name": "student 7", "url": "https://robohash.org/7.png" },
+    { "id": 8, "name": "student 8", "url": "https://robohash.org/8.png" },
+    { "id": 9, "name": "student 9", "url": "https://robohash.org/9.png" },
+    { "id": 10, "name": "student 10", "url": "https://robohash.org/10.png" }
   ],
   "groups": [
     { "id": 1, "name": "some group" },
