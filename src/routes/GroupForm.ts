@@ -26,7 +26,7 @@ class GroupFormRoute {
       const request: http.ClientRequest = http.request(requestOptions, (response: http.ClientResponse) => {
         response.on('data', (chunk: any) => {
           console.log('GroupForm chunk');
-          console.log(chunk);
+          res.send(chunk.toString());
         });
       });
 
