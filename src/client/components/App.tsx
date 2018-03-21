@@ -28,7 +28,12 @@ export default class App extends React.Component<IAppProps, IAppState> {
 
     this.state = {
       currentMode: UserStoryMode.WAITING,
-      query: {},
+      query: {
+        group: {
+          size: 0,
+        },
+        students: [],
+      },
       students: [],
     };
   }

@@ -1,13 +1,14 @@
+/// <reference path="../../grouper.d.ts" />
 import * as React from 'react';
 
 import Paper from 'material-ui/Paper';
 import Avatar from 'material-ui/Avatar';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
+import RaisedButton from 'material-ui/RaisedButton';
 
 export interface IFormProps {
   students: IStudent[];
-
   [index: string]: any;
 }
 
@@ -21,7 +22,12 @@ class GrouperForm extends React.Component<IFormProps, IFormState> {
     super(props);
 
     this.state = {
-      query: {},
+      query: {
+        group: {
+          size: 0,
+        },
+        students: [],
+      },
       selectedStudents: [],
     };
   }
@@ -43,6 +49,11 @@ class GrouperForm extends React.Component<IFormProps, IFormState> {
               })
             }
           </List>
+        </Paper>
+        <Paper className="form-section">
+          <RaisedButton onClick={this.props.onSubmitForm}>
+            Submit
+          </RaisedButton>
         </Paper>
       </div>
     );

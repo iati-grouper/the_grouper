@@ -11,12 +11,6 @@ class StudentRoutes {
 
   private mountRoutes(): void {
     this.express.get('', (req: Request, res: Response) => {
-      // const xhr: XMLHttpRequest = new XMLHttpRequest();
-      // xhr.open('get', 'http://localhost:3004/students');
-      // xhr.onreadystatechange = (e: Event) => {
-      //   res.json(xhr.responseText);
-      // };
-      // xhr.send();
 
       http.get({
         agent: false,  // create a new agent just for this one request

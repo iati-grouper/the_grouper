@@ -5,5 +5,10 @@ interface IStudent {
 }
 
 interface IGrouperQuery {
-  [index: string]: any;
+  students: string[];
+  group: IGroupParameters;
+}
+
+interface IGroupParameters {
+  size: number;
 }
