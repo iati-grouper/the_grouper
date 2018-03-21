@@ -12,6 +12,7 @@
     "typeorm": "^0.1.16"
   },
   "devDependencies": {
+    "tslint": "^5.9.1",
     "typescript": "^2.7.2"
   },
   "scripts": {
