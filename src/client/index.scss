@@ -1,3 +1,32 @@
 body {
-  background-color: red;
+  @mixin no-padding {
+    padding: 0;
+  }
+  @mixin no-margin {
+    margin: 0;
+  }
+
+  @include no-margin;
+  @include no-padding;
+
+  #main-wrapper {
+    @include no-margin;
+    @include no-padding;
+    text-align: center;
+
+    .waiting-wrapper {
+      width: 100%;
+      padding: 100px 0;
+    }
+
+    .student-list-wrapper {
+      padding: 10px;
+
+      .student-list {
+        text-align: left;
+        max-width: 200px;
+        padding: 10px;
+      }
+    }
+  }
 }

@@ -53,6 +53,7 @@
       "check-open-brace",
       "check-whitespace"
     ],
+    "ordered-imports": false,
     "prefer-const": true,
     "quotemark": [
       true,
@@ -86,7 +87,7 @@
       }
     ],
     "whitespace": [
-      true,
+      false,
       "check-branch",
       "check-decl",
       "check-operator",

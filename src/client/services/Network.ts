@@ -1,5 +1,7 @@
+///<reference path="../../grouper.d.ts" />
+
 export const getStudents = (): Promise<any> => {
-  return new Promise((res, rej) => {
+  return new Promise((res: (value: IStudent[]) => void, rej: (error: any) => void) => {
     const xhr = new XMLHttpRequest();
     xhr.open('get', '/students');
     xhr.onreadystatechange = (e: Event) => {
@@ -15,7 +17,7 @@ export const getStudents = (): Promise<any> => {
     };
     xhr.onerror = (e: Event) => {
       rej(xhr.statusText);
-    }
+    };
     xhr.send();
   });
 };
