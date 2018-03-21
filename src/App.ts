@@ -1,4 +1,7 @@
 import express, { Request, Response } from 'express';
+import path from 'path';
+
+const indexHtml: string = path.resolve(__dirname, '../index.html');
 
 class App {
   public express: express.Application;
@@ -11,11 +14,10 @@ class App {
   private mountRoutes(): void {
     const router = express.Router();
     router.get('/', (req: Request, res: Response) => {
-      res.json({
-        message: 'Hello World!',
-      });
+      res.sendFile(indexHtml);
     });
     this.express.use('/', router);
+    this.express.use('/dist', express.static('dist'));
   }
 }
 
