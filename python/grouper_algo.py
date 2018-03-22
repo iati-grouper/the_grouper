@@ -168,12 +168,17 @@ def get_group_data(data):
 
 def get_weights_dict(data):
     effecOfHistory = data["group"]["effectOfHistory"]
-    level_weight = 0.5  # todo: need to change in a future
+    # todo: need to change in a future
+    counters_weight = effecOfHistory
+    random_weight = 1 - effecOfHistory
+    gender_weight = 0
+    level_weight = 0.5
+    total_weight = counters_weight + random_weight + gender_weight + level_weight
     weights = dict()
-    weights["counters"] = effecOfHistory * level_weight
-    weights["random"] = 1 - effecOfHistory * level_weight
-    weights["gender"] = 0
-    weights["level"] = level_weight
+    weights["counters"] = counters_weight / total_weight
+    weights["random"] = random_weight / total_weight
+    weights["gender"] = gender_weight / total_weight
+    weights["level"] = level_weight / total_weight
     return weights
 
 def get_scores_dictionary(data, weights_dict, ids_list):
