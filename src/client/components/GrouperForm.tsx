@@ -9,6 +9,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import Slider from 'material-ui/Slider';
+import Toggle from "material-ui/Toggle";
 
 export interface IFormProps {
   effectOfHistory: number;
@@ -54,15 +55,22 @@ class GrouperForm extends React.Component<IFormProps, IFormState> {
           <div className="form-inputs-wrapper">
             <Paper className="form-inputs">
               {
+                effectOfHistoryComponent({
+                  effectOfHistory: this.props.effectOfHistory,
+                  onEffectOfHistoryChange: this.props.onEffectOfHistoryChange,
+                })
+              }
+              {
                 groupSizeComponent({
                   groupSize: this.props.groupSize,
                   onGroupSizeChange: this.props.onGroupSizeChange,
                 })
               }
+              {activityTypeComponent()}
               {
-                effectOfHistoryComponent({
-                  effectOfHistory: this.props.effectOfHistory,
-                  onEffectOfHistoryChange: this.props.onEffectOfHistoryChange,
+                homogeneousComponent({
+                  isSameLevel: this.props.isSameLevel,
+                  onSameLevelChange: this.props.onSameLevelChange,
                 })
               }
             </Paper>
@@ -88,7 +96,7 @@ const groupSizeComponent = (props: IGroupSizeProps) => {
     return result;
   };
   return (
-    <div className="group-size-wrapper">
+    <div className="input-param-wrapper">
       <Paper className="input-section">
         <Subheader>Size of Each Group</Subheader>
         <DropDownMenu value={props.groupSize}
@@ -102,17 +110,49 @@ const groupSizeComponent = (props: IGroupSizeProps) => {
   );
 };
 
+const activityTypeComponent = () => {
+  return (
+    <div className="input-param-wrapper">
+      <Paper className="input-section">
+        <Subheader>Type of Activity</Subheader>
+        <DropDownMenu>
+          <MenuItem primaryText="Fun"/>
+          <MenuItem primaryText="Mathematics"/>
+          <MenuItem primaryText="Social Sciences"/>
+          <MenuItem primaryText="Sports"/>
+          <MenuItem primaryText="English"/>
+        </DropDownMenu>
+      </Paper>
+    </div>
+  );
+};
+
 type IEffectOfHistoryProps = Pick<IFormProps, 'onEffectOfHistoryChange' | 'effectOfHistory'>;
 const effectOfHistoryComponent = (props: IEffectOfHistoryProps) => {
   return (
-    <div className="effect-of-history-wrapper">
+    <div className="input-param-wrapper">
       <Paper className="input-section">
         <Subheader>Effect Of Historical Groups</Subheader>
         <Subheader>0% is Random, 100% is Very Effective</Subheader>
         <Slider value={props.effectOfHistory}
+                style={{margin: 'auto', width: 200, padding: '10px 0'}}
                 onChange={(e: any, value: number) => {
                   props.onEffectOfHistoryChange(value);
                 }}/>
+      </Paper>
+    </div>
+  );
+};
+
+type ISameLevelProps = Pick<IFormProps, 'onSameLevelChange' | 'isSameLevel'>;
+const homogeneousComponent = (props: ISameLevelProps) => {
+  return (
+    <div className="input-param-wrapper">
+      <Paper className="input-section">
+        <Toggle style={{margin: 'auto', padding: '10px 0', width: 'inherit'}}
+                defaultToggled={false}
+                label="Similar Levels"
+                onToggle={(e: any) => props.onSameLevelChange()}/>
       </Paper>
     </div>
   );

@@ -66,16 +66,12 @@ body {
 
           .form-inputs {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
 
             .input-section {
-              margin: 10px;
+              margin: 20px;
             }
-            .group-size-wrapper {
-              width: 100%;
-              min-width: 200px;
-            }
-            .effect-of-history-wrapper {
+            .input-param-wrapper {
               width: 100%;
               min-width: 200px;
             }
