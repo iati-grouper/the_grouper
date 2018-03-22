@@ -53,7 +53,7 @@ export default class Students extends React.Component<{}, IStudentsState> {
 interface IStudentProps {
   student: IStudent;
 }
-const Student: React.SFC<IStudentProps> = (props) => {
+export const Student: React.SFC<IStudentProps> = (props) => {
   const {student: {id, name}} = props;
   return (
     <div>{name}&nbsp;{id}</div>
