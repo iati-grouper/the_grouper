@@ -14,6 +14,7 @@ interface IGrouperQuery {
 
 interface IGroupParameters {
   size: number;
+  is_same_level: boolean;
 }
 
 interface IStudentHistory {
