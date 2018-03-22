@@ -76,9 +76,11 @@ class GrouperForm extends React.Component<IFormProps, IFormState> {
             </Paper>
           </div>
           <div className="submit-button-section">
-            <RaisedButton onClick={this.props.onSubmit}>
-              Submit
-            </RaisedButton>
+            <RaisedButton label="Submit"
+                          fullWidth={true}
+                          style={{}}
+                          primary={true}
+                          onClick={this.props.onSubmit}/>
           </div>
         </div>
       </div>
