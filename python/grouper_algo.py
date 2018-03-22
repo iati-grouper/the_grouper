@@ -3,7 +3,6 @@ import random
 import os
 
 
-
 def calc_amount_of_groups(ids_list, group_size):
     # todo: add group_size_limit
     half_group_size = group_size/float(2)
@@ -113,9 +112,9 @@ def create_counters_matrix(data, ids):
     for i in range(len(ids)):
         vector = [0]*len(ids)
         vector[i] = numpy.inf
-        for other_student in data["students"][0][ids[i]]:
-            index = ids.index(other_student["id"])
-            vector[index] = other_student["count"]
+        for other_student in data["students"][ids[i]]["peers"].keys():
+            index = ids.index(other_student)
+            vector[index] = data["students"][ids[i]]["peers"][other_student]
         matrix.append(vector)
     print("Counters matrix:\n{0}\n".format(numpy.array(matrix)))
     return numpy.array(matrix)
@@ -137,7 +136,7 @@ def create_random_matrix(data, ids_list):
     return random_scores*mask
 
 def get_ids_list(data):
-    ids_list = data["students"][0].keys()
+    ids_list = data["students"].keys()
     for member in ids_list:
         if "id" not in member:
             ids_list.remove(member)
