@@ -1,0 +1,230 @@
+{
+	"students": [{
+		"id0": [{
+				"name": "Can",
+				"id": "id1",
+				"count": 3
+			},
+			{
+				"name": "Yoram",
+				"id": "id2",
+				"count": 2
+			},
+			{
+				"name": "Eyal",
+				"id": "id3",
+				"count": 4
+			},
+			{
+				"name": "Dorit",
+				"id": "id4",
+				"count": 0
+			},
+			{
+				"name": "Smaadar",
+				"id": "id5",
+				"count": 6
+			},
+			{
+				"name": "Ehud",
+				"id": "id6",
+				"count": 3
+			}
+		],
+		"id1": [{
+				"name": "Dana",
+				"id": "id0",
+				"count": 3
+			},
+			{
+				"name": "Yoram",
+				"id": "id2",
+				"count": 4
+			},
+			{
+				"name": "Eyal",
+				"id": "id3",
+				"count": 4
+			},
+			{
+				"name": "Dorit",
+				"id": "id4",
+				"count": 3
+			},
+			{
+				"name": "Smaadar",
+				"id": "id5",
+				"count": 0
+			},
+			{
+				"name": "Ehud",
+				"id": "id6",
+				"count": 5
+			}
+		],
+		"id2": [{
+				"name": "Dana",
+				"id": "id0",
+				"count": 2
+			},
+			{
+				"name": "Can",
+				"id": "id1",
+				"count": 4
+			},
+			{
+				"name": "Eyal",
+				"id": "id3",
+				"count": 3
+			},
+			{
+				"name": "Dorit",
+				"id": "id4",
+				"count": 4
+			},
+			{
+				"name": "Smaadar",
+				"id": "id5",
+				"count": 5
+			},
+			{
+				"name": "Ehud",
+				"id": "id6",
+				"count": 6
+			}
+		],
+		"id3": [{
+				"name": "Dana",
+				"id": "id0",
+				"count": 4
+			},
+			{
+				"name": "Can",
+				"id": "id1",
+				"count": 4
+			},
+			{
+				"name": "Yoram",
+				"id": "id2",
+				"count": 3
+			},
+			{
+				"name": "Dorit",
+				"id": "id4",
+				"count": 2
+			},
+			{
+				"name": "Smaadar",
+				"id": "id5",
+				"count": 3
+			},
+			{
+				"name": "Ehud",
+				"id": "id6",
+				"count": 3
+			}
+		],
+		"id4": [{
+				"name": "Dana",
+				"id": "id0",
+				"count": 0
+			},
+			{
+				"name": "Can",
+				"id": "id1",
+				"count": 3
+			},
+			{
+				"name": "Yoram",
+				"id": "id2",
+				"count": 4
+			},
+			{
+				"name": "Eyal",
+				"id": "id3",
+				"count": 2
+			},
+			{
+				"name": "Smaadar",
+				"id": "id5",
+				"count": 1
+			},
+			{
+				"name": "Ehud",
+				"id": "id6",
+				"count": 1
+			}
+		],
+		"id5": [{
+				"name": "Dana",
+				"id": "id0",
+				"count": 6
+			},
+			{
+				"name": "Can",
+				"id": "id1",
+				"count": 0
+			},
+			{
+				"name": "Yoram",
+				"id": "id2",
+				"count": 5
+			},
+			{
+				"name": "Eyal",
+				"id": "id3",
+				"count": 3
+			},
+			{
+				"name": "Dorit",
+				"id": "id4",
+				"count": 1
+			},
+			{
+				"name": "Ehud",
+				"id": "id6",
+				"count": 0
+			}
+		],
+		"id6": [{
+				"name": "Dana",
+				"id": "id0",
+				"count": 3
+			},
+			{
+				"name": "Can",
+				"id": "id1",
+				"count": 5
+			},
+			{
+				"name": "Yoram",
+				"id": "id2",
+				"count": 6
+			},
+			{
+				"name": "Eyal",
+				"id": "id3",
+				"count": 3
+			},
+			{
+				"name": "Dorit",
+				"id": "id4",
+				"count": 1
+			},
+			{
+				"name": "Smaadar",
+				"id": "id5",
+				"count": 0
+			}
+		]
+	}],
+	"group": {
+		"size": 2,
+		"weights": {
+			"counters": 0.9,
+			"gender": 0,
+			"level": 0,
+			"random": 0.1
+		}
+	}
+}
