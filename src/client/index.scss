@@ -34,22 +34,56 @@ body {
       padding: 100px 0;
     }
 
-    .student-list-wrapper {
+    .form-wrapper {
       padding: 10px;
+      min-width: 200px;
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      flex-wrap: wrap;
 
-      .student-list {
-        text-align: left;
-        max-width: 200px;
+      .student-list-wrapper {
         padding: 10px;
-        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .student-list {
+          text-align: left;
+          padding: 10px;
+          min-width: 200px;
+          width: 28%;
+        }
       }
       .form-section {
+        width: 72%;
         padding: 10px;
-        min-width: 200px;
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+
+        .form-inputs-wrapper {
+          width: 100%;
+          min-width: 300px;
+
+          .form-inputs {
+            display: flex;
+            flex-direction: row;
+
+            .input-section {
+              margin: 10px;
+            }
+            .group-size-wrapper {
+              width: 100%;
+              min-width: 200px;
+            }
+            .effect-of-history-wrapper {
+              width: 100%;
+              min-width: 200px;
+            }
+          }
+        }
+        .submit-button-section {
+
+        }
       }
     }
   }

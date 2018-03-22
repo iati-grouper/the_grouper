@@ -30,7 +30,7 @@ export const makeQuery = (query: IGrouperQuery) => {
       if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
         const response: any = xhr.response;
         try {
-          res(JSON.parse(response));
+          res(JSON.parse(response) as string[][]);
         }
         catch (e) {
           res(response);

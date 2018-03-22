@@ -1,5 +1,5 @@
 interface IStudent {
-  id: number;
+  id: string;
   name: string;
   imageUrl: string;
   gender?: string;
@@ -13,11 +13,12 @@ interface IGrouperQuery {
 }
 
 interface IGroupParameters {
-  size: number;
-  is_same_level: boolean;
+  groupSize: number;
+  effectOfHistory: number; // 0 - 1. 0 is random, 1 is based on historical data.
+  isSameLevel: boolean;
 }
 
 interface IStudentHistory {
-    group: number[];
-    studentId: string;
+  group: number[];
+  studentId: string;
 }
