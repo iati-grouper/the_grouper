@@ -14,6 +14,21 @@ body {
     @include no-padding;
     text-align: center;
 
+    .nav-title-wrapper {
+      display: inline-flex;
+      justify-content: space-between;
+      width: 200px;
+      margin: 10px;
+      img {
+        line-height: 50px;
+      }
+
+      .nav-title {
+        line-height: 40px;
+        display: inline-block;
+      }
+    }
+
     .waiting-wrapper {
       width: 100%;
       padding: 100px 0;

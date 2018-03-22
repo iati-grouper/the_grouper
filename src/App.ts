@@ -25,6 +25,7 @@ class App {
     this.express.use('/students', StudentRoutes);
     this.express.use('/group_form', GroupForm);
     this.express.use('/dist', express.static('dist'));
+    this.express.use('/assets', express.static('assets'));
   }
 }
 
