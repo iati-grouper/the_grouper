@@ -30,6 +30,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
       currentMode: UserStoryMode.WAITING,
       effectOfHistory: 0.5,
       groupSize: 2,
+      isSameLevel: false,
       students: [],
     };
 
@@ -37,6 +38,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
     this.onEffectOfHistoryChange = this.onEffectOfHistoryChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.convertStateToQuery = this.convertStateToQuery.bind(this);
+    this.onSameLevelChange = this.onSameLevelChange.bind(this);
   }
 
   public componentWillMount() {
@@ -59,6 +61,8 @@ export default class App extends React.Component<IAppProps, IAppState> {
           return <GrouperForm students={this.state.students}
                               effectOfHistory={this.state.effectOfHistory}
                               onEffectOfHistoryChange={this.onEffectOfHistoryChange}
+                              isSameLevel={this.state.isSameLevel}
+                              onSameLevelChange={this.onSameLevelChange}
                               onGroupSizeChange={this.onGroupSizeChange}
                               groupSize={this.state.groupSize}
                               onSubmit={this.onSubmit}/>;
@@ -88,6 +92,12 @@ export default class App extends React.Component<IAppProps, IAppState> {
     });
   }
 
+  public onSameLevelChange() {
+    this.setState({
+      isSameLevel: !this.state.isSameLevel,
+    });
+  }
+
   public onSubmit() {
     const queryObject: IGrouperQuery = this.convertStateToQuery();
     makeQuery(queryObject)
@@ -109,11 +119,12 @@ export default class App extends React.Component<IAppProps, IAppState> {
   }
 
   private convertStateToQuery(): IGrouperQuery {
-    const {students, groupSize, effectOfHistory} = this.state;
+    const {students, groupSize, effectOfHistory, isSameLevel} = this.state;
     const ids: string[] = students.map((s: IStudent) => s.id);
     const query: IGroupParameters = {
       effectOfHistory,
       groupSize,
+      isSameLevel,
     };
 
     return {

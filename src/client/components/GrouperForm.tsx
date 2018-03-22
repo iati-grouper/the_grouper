@@ -13,8 +13,10 @@ import Slider from 'material-ui/Slider';
 export interface IFormProps {
   effectOfHistory: number;
   groupSize: number;
+  isSameLevel: boolean;
   students: IStudent[];
   onSubmit: () => void;
+  onSameLevelChange: () => void;
   onGroupSizeChange: (x: number) => void;
   onEffectOfHistoryChange: (x: number) => void;
 }
