@@ -24,13 +24,16 @@ class GroupFormRoute {
         }, (response: any) => {
             response.on('data', (chunk: any) => {
                 const students = JSON.parse(chunk.toString());
-                console.log("students", students);
                 res.send(chunk.toString());
                 students.map( (student: IStudent) => {
                     studentMappings[student.id] = {
-                        student
+                        "name": student.name,
+                        "gender": student.gender,
+                        "level": student.level,
+                        "peers": []
                     };
                 });
+                console.log("students", students);
             });
         });
       // 2. reduce the history to a count attribute on students
