@@ -2,6 +2,7 @@
 import * as React from 'react';
 import {Waiting} from './Waiting';
 import {GrouperForm} from './GrouperForm';
+import {ReviewGroups} from './ReviewGroups';
 import {getStudents, makeQuery} from '../services/Network';
 
 export enum UserStoryMode {
@@ -19,7 +20,7 @@ interface IAppProps {
 interface IAppState extends IGroupParameters {
   currentMode: UserStoryMode;
   students: IStudent[];
-  result?: any;
+  result?: string[][];
 }
 
 export default class App extends React.Component<IAppProps, IAppState> {
@@ -29,7 +30,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
     this.state = {
       currentMode: UserStoryMode.WAITING,
       effectOfHistory: 0.5,
-      groupSize: 2,
+      groupSize: 5,
       isSameLevel: false,
       students: [],
     };
@@ -55,6 +56,16 @@ export default class App extends React.Component<IAppProps, IAppState> {
   }
 
   public render() {
+    const getQuery = (): IGrouperQuery => {
+      return {
+        group: {
+          effectOfHistory: this.state.effectOfHistory,
+          groupSize: this.state.groupSize,
+          isSameLevel: this.state.isSameLevel,
+        },
+        students: [],
+      };
+    };
     const getApp: (m: UserStoryMode) => JSX.Element = (m: UserStoryMode) => {
       switch (m) {
         case UserStoryMode.CREATING: {
@@ -67,9 +78,13 @@ export default class App extends React.Component<IAppProps, IAppState> {
                               groupSize={this.state.groupSize}
                               onSubmit={this.onSubmit}/>;
         }
-        // case UserStoryMode.REVIEWING: {
-        //   return <ReviewGroups/>;
-        // }
+        case UserStoryMode.REVIEWING: {
+          return <ReviewGroups students={this.state.students}
+                               queryResult={this.state.result}
+                               query={getQuery()}
+
+          />;
+        }
         // case UserStoryMode.DONE: {
         //   return <GrouperDone/>;
         // }

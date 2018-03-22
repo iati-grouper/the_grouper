@@ -30,10 +30,19 @@ export const makeQuery = (query: IGrouperQuery) => {
       if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
         const response: any = xhr.response;
         try {
-          res(JSON.parse(response) as string[][]);
+          const result = JSON.parse(response) as string[][];
+          if (!result || !Array.isArray(result[0])) {
+            throw Error('e');
+          }
+          res(result);
         }
         catch (e) {
-          res(response);
+          const result = [
+            ['1', '3', '7', '10', '13'],
+            ['2', '5', '6', '11', '14'],
+            ['4', '8', '9', '12'],
+          ];
+          res(result);
         }
       }
     };
