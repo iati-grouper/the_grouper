@@ -1,19 +1,19 @@
 {
   "students": [
-    { "id": 1, "name": "Dor Cohen", "imageUrl": "https://robohash.org/1.png" },
-    { "id": 2, "name": "Shiri Bar Lamrovitz", "imageUrl": "https://robohash.org/2.png" },
-    { "id": 3, "name": "Liav Ezer", "imageUrl": "https://robohash.org/3.png" },
-    { "id": 4, "name": "Kobi Zamir", "imageUrl": "https://robohash.org/4.png" },
-    { "id": 5, "name": "Lia Kamenir", "imageUrl": "https://robohash.org/5.png" },
-    { "id": 6, "name": "Maayan Layfer", "imageUrl": "https://robohash.org/6.png" },
-    { "id": 7, "name": "Yuval Turgeman", "imageUrl": "https://robohash.org/7.png" },
-    { "id": 8, "name": "Ayala Mann", "imageUrl": "https://robohash.org/8.png" },
-    { "id": 9, "name": "Tom Vaingart", "imageUrl": "https://robohash.org/9.png" },
-    { "id": 10, "name": "Aviram Doly", "imageUrl": "https://robohash.org/10.png" },
-    { "id": 11, "name": "Eirkali Pipishvili", "imageUrl": "https://robohash.org/11.png" },
-    { "id": 12, "name": "Dror Pipano", "imageUrl": "https://robohash.org/12.png" },
-    { "id": 13, "name": "Almog Sade", "imageUrl": "https://robohash.org/13.png" },
-    { "id": 14, "name": "Elad Geva", "imageUrl": "https://robohash.org/14.png" }
+    { "id": 1, "name": "Dor Cohen", "gender": "m", "level": 5, "imageUrl": "https://robohash.org/1.png" },
+    { "id": 2, "name": "Shiri Bar Lamrovitz", "gender": "f", "level": 4, "imageUrl": "https://robohash.org/2.png" },
+    { "id": 3, "name": "Liav Ezer", "gender": "m", "level": 4, "imageUrl": "https://robohash.org/3.png" },
+    { "id": 4, "name": "Kobi Zamir", "gender": "m", "level": 2, "imageUrl": "https://robohash.org/4.png" },
+    { "id": 5, "name": "Lia Kamenir", "gender": "f", "level": 2, "imageUrl": "https://robohash.org/5.png" },
+    { "id": 6, "name": "Maayan Layfer", "gender": "f", "level": 1, "imageUrl": "https://robohash.org/6.png" },
+    { "id": 7, "name": "Yuval Turgeman", "gender": "m", "level": 1, "imageUrl": "https://robohash.org/7.png" },
+    { "id": 8, "name": "Ayala Mann", "gender": "f", "level": 5, "imageUrl": "https://robohash.org/8.png" },
+    { "id": 9, "name": "Tom Vaingart", "gender": "m", "level": 4, "imageUrl": "https://robohash.org/9.png" },
+    { "id": 10, "name": "Aviram Doly", "gender": "m", "level": 4, "imageUrl": "https://robohash.org/10.png" },
+    { "id": 11, "name": "Eirkali Pipishvili", "gender": "m", "level": 3, "imageUrl": "https://robohash.org/11.png" },
+    { "id": 12, "name": "Dror Pipano", "gender": "m", "level": 4, "imageUrl": "https://robohash.org/12.png" },
+    { "id": 13, "name": "Almog Sade", "gender": "m", "level": 2, "imageUrl": "https://robohash.org/13.png" },
+    { "id": 14, "name": "Elad Geva", "gender": "m", "level": 1, "imageUrl": "https://robohash.org/14.png" }
   ],
   "groups": [
     { "id": 1, "name": "1st group" },
