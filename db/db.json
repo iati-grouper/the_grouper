@@ -1,15 +1,19 @@
 {
   "students": [
-    { "id": 1, "name": "student 1", "imageUrl": "https://robohash.org/1.png" },
-    { "id": 2, "name": "student 2", "imageUrl": "https://robohash.org/2.png" },
-    { "id": 3, "name": "student 3", "imageUrl": "https://robohash.org/3.png" },
-    { "id": 4, "name": "student 4", "imageUrl": "https://robohash.org/4.png" },
-    { "id": 5, "name": "student 5", "imageUrl": "https://robohash.org/5.png" },
-    { "id": 6, "name": "student 6", "imageUrl": "https://robohash.org/6.png" },
-    { "id": 7, "name": "student 7", "imageUrl": "https://robohash.org/7.png" },
-    { "id": 8, "name": "student 8", "imageUrl": "https://robohash.org/8.png" },
-    { "id": 9, "name": "student 9", "imageUrl": "https://robohash.org/9.png" },
-    { "id": 10, "name": "student 10", "imageUrl": "https://robohash.org/10.png" }
+    { "id": 1, "name": "Dor Cohen", "imageUrl": "https://robohash.org/1.png" },
+    { "id": 2, "name": "Shiri Bar Lamrovitz", "imageUrl": "https://robohash.org/2.png" },
+    { "id": 3, "name": "Liav Ezer", "imageUrl": "https://robohash.org/3.png" },
+    { "id": 4, "name": "Kobi Zamir", "imageUrl": "https://robohash.org/4.png" },
+    { "id": 5, "name": "Lia Kamenir", "imageUrl": "https://robohash.org/5.png" },
+    { "id": 6, "name": "Maayan Layfer", "imageUrl": "https://robohash.org/6.png" },
+    { "id": 7, "name": "Yuval Turgeman", "imageUrl": "https://robohash.org/7.png" },
+    { "id": 8, "name": "Ayala Mann", "imageUrl": "https://robohash.org/8.png" },
+    { "id": 9, "name": "Tom Vaingart", "imageUrl": "https://robohash.org/9.png" },
+    { "id": 10, "name": "Aviram Doly", "imageUrl": "https://robohash.org/10.png" },
+    { "id": 11, "name": "Eirkali Pipishvili", "imageUrl": "https://robohash.org/11.png" },
+    { "id": 12, "name": "Dror Pipano", "imageUrl": "https://robohash.org/12.png" },
+    { "id": 13, "name": "Almog Sade", "imageUrl": "https://robohash.org/13.png" },
+    { "id": 14, "name": "Elad ", "imageUrl": "https://robohash.org/14.png" }
   ],
   "groups": [
     { "id": 1, "name": "1st group" },
@@ -18,13 +22,33 @@
     { "id": 4, "name": "4th group" }
   ],
   "studentHistory": [
-    { "group": [ 2, 3, 4], "studentId": 1 },
-    { "group": [ 3, 4, 1], "studentId": 2 },
-    { "group": [ 4, 4], "studentId": 3 },
-    { "group": [ 3, 3, 2, 1], "studentId": 4 }
+    { "group": [ 2, 3, 4, 5, 6], "studentId": 1 },
+    { "group": [ 1, 3, 4, 5, 6], "studentId": 2 },
+    { "group": [ 2, 1, 4, 5, 6], "studentId": 3 },
+    { "group": [ 2, 3, 1, 5, 6], "studentId": 4 },
+    { "group": [ 2, 3, 4, 1, 6], "studentId": 5 },
+    { "group": [ 2, 3, 4, 5, 1], "studentId": 6 },
+    { "group": [ 8, 9, 10, 11, 12, 13, 14], "studentId": 7 },
+    { "group": [ 7, 9, 10, 11, 12, 13, 14], "studentId": 8 },
+    { "group": [ 8, 7, 10, 11, 12, 13, 14], "studentId": 9 },
+    { "group": [ 8, 9, 7, 11, 12, 13, 14], "studentId": 10 },
+    { "group": [ 8, 9, 10, 7, 12, 13, 14], "studentId": 11 },
+    { "group": [ 8, 9, 10, 11, 7, 13, 14], "studentId": 12 },
+    { "group": [ 8, 9, 10, 11, 12, 7, 14], "studentId": 13 },
+    { "group": [ 8, 9, 10, 11, 12, 13, 7], "studentId": 14 }
   ],
-  "profiles": [
-    { "id": 1, "type": "academic" },
-    { "id": 2, "type": "gym"}
+  "modules": [
+    { "id": 1, "type": "English" },
+    { "id": 2, "type": "Math"},
+    { "id": 3, "type": "Sports"},
+    { "id": 4, "type": "Fun"},
+    { "id": 5, "type": "Extra Credit"}
+  ],
+  "classes": [
+    { "id": 1, "type": "A1" },
+    { "id": 2, "type": "A2"},
+    { "id": 3, "type": "B1"},
+    { "id": 4, "type": "Fun"},
+    { "id": 5, "type": "Extra Credit"}
   ]
 }
