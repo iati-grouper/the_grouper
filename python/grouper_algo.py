@@ -44,16 +44,15 @@ def allocate_student_to_groups(logger, data, ids_list, groups_list, total_score_
         if len(remaining_ids_list) == len(ids_list):
             add_first_layer(remaining_ids_list, ids_list, groups_list, total_score_matrix)
         else:
-            add_students_layer(data, remaining_ids_list, groups_list)
+            add_students_layer(remaining_ids_list, ids_list, groups_list, total_score_matrix)
         logger.info("#" * 75)
     logger.info("current group list:\n{0}\n".format(groups_list))
     logger.info("remaining students:\n{0}\n".format(remaining_ids_list))
 
 
-def add_students_layer(data, remaining_students, groups_list):
-    for i in range(len(groups_list)):
-        group = groups_list[i]
-        score_list = calc_match_of_remaining_student_per_group(data, remaining_students, group)
+def add_students_layer(remaining_students, ids_list, groups_list, total_score_matrix):
+    for group in groups_list:
+        score_list = calc_match_of_remaining_student_per_group(total_score_matrix, ids_list, remaining_students, group)
 #         the best score will be append to the group
         index_of_best_match = numpy.array(score_list).argmax()
         group.append(remaining_students[index_of_best_match])
@@ -64,21 +63,21 @@ def add_students_layer(data, remaining_students, groups_list):
     return
 
 
-def calc_student_match_per_group(data, student_id, students_group):
-    # count score is the addition of the counters with student_id
-    count = 0
+def calc_student_match_per_group(total_score_matrix, ids_list, student_id, students_group):
+    mask = numpy.zeros(total_score_matrix.shape, dtype=bool)
+    student_id_index = ids_list.index(student_id)
     for student in students_group:
-        for other_student in data["students"][0][student]:
-            if other_student["id"] == student_id:
-                count += other_student["count"]
-                break
-    return count
+        temp_index = ids_list.index(student)
+        mask[student_id_index][temp_index] = numpy.True_
+
+    total_score = total_score_matrix[mask].sum()
+    return total_score
 
 
-def calc_match_of_remaining_student_per_group(data, remaining_students, students_group):
+def calc_match_of_remaining_student_per_group(total_score_matrix, ids_list, remaining_students, students_group):
     scores_list =[]
     for student in remaining_students:
-        scores_list.append(calc_student_match_per_group(data, student, students_group))
+        scores_list.append(calc_student_match_per_group(total_score_matrix, ids_list, student, students_group))
     return scores_list
 
 
@@ -151,6 +150,9 @@ def get_group_data(logger, data):
     logger.info("Size of each group: {0}\n".format(data["group"]["size"]))
     return data["group"]["size"]
 
+def get_weights_dict(logger, data):
+    return data["group"]["weights"]
+
 def get_scores_dictionary(logger, data, weights_dict, ids_list):
     scores_dict = dict()
     for model in weights_dict.keys():
@@ -166,14 +168,10 @@ def run_grouper(data):
     logger_obj = logClass.Logger("grouper_log.txt")
     logger = logger_obj.create_logger()
 
-    # json_data_file_name = os.path.join(os.getcwd(), "input.json")
-    # data = json.load(open(json_data_file_name))
-
     ids_list = get_ids_list(logger, data)
-
     group_size = get_group_data(logger, data)
+    weights_dict = get_weights_dict(logger, data)
 
-    weights_dict = {"counters": 0.9, "gender": 0, "level": 0, "random": 0.1}
     scores_dict = get_scores_dictionary(logger, data, weights_dict, ids_list)
 
     total_score_matrix = calc_total_score_according_weights(logger, scores_dict, weights_dict)
