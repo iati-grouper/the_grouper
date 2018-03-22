@@ -1,4 +1,5 @@
 import numpy
+import math
 import random
 import os
 
@@ -80,7 +81,7 @@ def calc_match_of_remaining_student_per_group(total_score_matrix, ids_list, rema
     return scores_list
 
 
-def calc_counters_score_matrix(counters_matrix):
+def calc_counters_score_matrix(data, counters_matrix):
     # score = 1 / ( 1 + count)
     print("score = 1 / (1 + count)")
     score_matrix = 1/(1+counters_matrix)
@@ -88,14 +89,19 @@ def calc_counters_score_matrix(counters_matrix):
     return score_matrix
 
 
-def calc_gender_score_matrix(gender_matrix):
+def calc_gender_score_matrix(data, gender_matrix):
     return gender_matrix
 
 
-def calc_level_score_matrix(level_matrix):
-    return level_matrix
+def calc_level_score_matrix(data, level_matrix):
+    is_same_level = data["group"]["isSameLevel"]
+    if is_same_level:
+        return 1 - level_matrix/4
+    else:
+        return level_matrix/4
 
-def calc_random_score_matrix(random_matrix):
+
+def calc_random_score_matrix(data, random_matrix):
     return random_matrix
 
 def calc_total_score_according_weights(scores_dict, weights_dict):
@@ -124,10 +130,20 @@ def create_gender_matrix(data, ids_list):
     print("Gender matrix:\n{0}\n".format(score_matrix))
     return score_matrix
 
-def create_level_matrix(data, ids_list):
-    score_matrix = numpy.zeros((len(ids_list),len(ids_list)))
-    print("Level matrix:\n{0}\n".format(score_matrix))
-    return score_matrix
+def create_level_matrix(data, ids):
+    levels = []
+    for student_id in ids:
+        levels.append(data["students"][student_id]['level'])
+    matrix = []
+    for i in range(len(ids)):
+        vector = [0]*len(ids)
+        vector[i] = numpy.inf
+        for other_student in data["students"][ids[i]]["peers"].keys():
+            index = ids.index(other_student)
+            vector[index] = abs(levels[i] - levels[index])
+        matrix.append(vector)
+    print("Level matrix:\n{0}\n".format(numpy.array(matrix)))
+    return numpy.array(matrix)
 
 def create_random_matrix(data, ids_list):
     random_scores = numpy.random.rand(len(ids_list), len(ids_list))
@@ -146,11 +162,19 @@ def get_ids_list(data):
 
 
 def get_group_data(data):
-    print("Size of each group: {0}\n".format(data["group"]["size"]))
-    return data["group"]["size"]
+    print("Size of each group: {0}\n".format(data["group"]["groupSize"]))
+    return data["group"]["groupSize"]
+
 
 def get_weights_dict(data):
-    return data["group"]["weights"]
+    effecOfHistory = data["group"]["effecOfHistory"]
+    level_weight = 0.5  # todo: need to change in a future
+    weights = dict()
+    weights["counters"] = effecOfHistory * level_weight
+    weights["random"] = 1 - effecOfHistory * level_weight
+    weights["gender"] = 0
+    weights["level"] = level_weight
+    return weights
 
 def get_scores_dictionary(data, weights_dict, ids_list):
     scores_dict = dict()
@@ -158,7 +182,7 @@ def get_scores_dictionary(data, weights_dict, ids_list):
         func_name = "create_{0}_matrix".format(model)
         data_matrix = globals()[func_name](data, ids_list)
         func_name = "calc_{0}_score_matrix".format(model)
-        scores_dict[model] = globals()[func_name](data_matrix)
+        scores_dict[model] = globals()[func_name](data, data_matrix)
     return scores_dict
 
 
