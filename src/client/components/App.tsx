@@ -30,7 +30,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
     this.state = {
       currentMode: UserStoryMode.WAITING,
       effectOfHistory: 0.5,
-      groupSize: 5,
+      groupSize: 2,
       isSameLevel: false,
       students: [],
     };
