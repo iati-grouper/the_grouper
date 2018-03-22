@@ -167,7 +167,7 @@ def get_group_data(data):
 
 
 def get_weights_dict(data):
-    effecOfHistory = data["group"]["effecOfHistory"]
+    effecOfHistory = data["group"]["effectOfHistory"]
     level_weight = 0.5  # todo: need to change in a future
     weights = dict()
     weights["counters"] = effecOfHistory * level_weight
