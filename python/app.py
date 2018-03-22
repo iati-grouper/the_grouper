@@ -4,6 +4,7 @@ from flask import make_response
 
 app = Flask(__name__)
 
+
 @app.route('/grouper', methods=['POST'])
 def grouper():
    message = None

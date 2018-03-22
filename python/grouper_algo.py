@@ -1,7 +1,6 @@
 import numpy
 import random
 import os
-import loggerClass as logClass
 
 
 def calc_amount_of_groups(ids_list, group_size):
@@ -36,18 +35,18 @@ def add_first_layer(remaining_ids_list, ids_list, groups_list, total_score_matri
     return
 
 
-def allocate_student_to_groups(logger, data, ids_list, groups_list, total_score_matrix):
+def allocate_student_to_groups(data, ids_list, groups_list, total_score_matrix):
     remaining_ids_list = [student_id for student_id in ids_list]
     while len(remaining_ids_list) != 0:
-        logger.info("current group list:\n{0}".format(groups_list))
-        logger.info("remaining students:\n{0}\n".format(remaining_ids_list))
+        print("current group list:\n{0}".format(groups_list))
+        print("remaining students:\n{0}\n".format(remaining_ids_list))
         if len(remaining_ids_list) == len(ids_list):
             add_first_layer(remaining_ids_list, ids_list, groups_list, total_score_matrix)
         else:
             add_students_layer(remaining_ids_list, ids_list, groups_list, total_score_matrix)
-        logger.info("#" * 75)
-    logger.info("current group list:\n{0}\n".format(groups_list))
-    logger.info("remaining students:\n{0}\n".format(remaining_ids_list))
+        print("#" * 75)
+    print("current group list:\n{0}\n".format(groups_list))
+    print("remaining students:\n{0}\n".format(remaining_ids_list))
 
 
 def add_students_layer(remaining_students, ids_list, groups_list, total_score_matrix):
@@ -81,103 +80,100 @@ def calc_match_of_remaining_student_per_group(total_score_matrix, ids_list, rema
     return scores_list
 
 
-def calc_counters_score_matrix(logger, counters_matrix):
+def calc_counters_score_matrix(counters_matrix):
     # score = 1 / ( 1 + count)
-    logger.info("score = 1 / (1 + count)")
+    print("score = 1 / (1 + count)")
     score_matrix = 1/(1+counters_matrix)
-    logger.info("Score according counters:\n{0}\n".format(score_matrix))
+    print("Score according counters:\n{0}\n".format(score_matrix))
     return score_matrix
 
 
-def calc_gender_score_matrix(logger, gender_matrix):
+def calc_gender_score_matrix(gender_matrix):
     return gender_matrix
 
 
-def calc_level_score_matrix(logger, level_matrix):
+def calc_level_score_matrix(level_matrix):
     return level_matrix
 
-def calc_random_score_matrix(logger, random_matrix):
+def calc_random_score_matrix(random_matrix):
     return random_matrix
 
-def calc_total_score_according_weights(logger, scores_dict, weights_dict):
+def calc_total_score_according_weights(scores_dict, weights_dict):
     models = weights_dict.keys()
     total_score_matrix = scores_dict[models[0]] * weights_dict[models[0]]
     for model in models[1:]:
         total_score_matrix += scores_dict[model] * weights_dict[model]
-    logger.info("Total score:\n{0}\n".format(total_score_matrix))
+    print("Total score:\n{0}\n".format(total_score_matrix))
     return total_score_matrix
 
 
-def create_counters_matrix(logger, data, ids):
+def create_counters_matrix(data, ids):
     matrix = []
     for i in range(len(ids)):
         vector = [0]*len(ids)
         vector[i] = numpy.inf
-        for other_student in data["students"][0][ids[i]]:
-            index = ids.index(other_student["id"])
-            vector[index] = other_student["count"]
+        for other_student in data["students"][ids[i]]["peers"].keys():
+            index = ids.index(other_student)
+            vector[index] = data["students"][ids[i]]["peers"][other_student]
         matrix.append(vector)
-    logger.info("Counters matrix:\n{0}\n".format(numpy.array(matrix)))
+    print("Counters matrix:\n{0}\n".format(numpy.array(matrix)))
     return numpy.array(matrix)
 
-def create_gender_matrix(logger, data, ids_list):
+def create_gender_matrix(data, ids_list):
     score_matrix = numpy.zeros((len(ids_list),len(ids_list)))
-    logger.info("Gender matrix:\n{0}\n".format(score_matrix))
+    print("Gender matrix:\n{0}\n".format(score_matrix))
     return score_matrix
 
-def create_level_matrix(logger, data, ids_list):
+def create_level_matrix(data, ids_list):
     score_matrix = numpy.zeros((len(ids_list),len(ids_list)))
-    logger.info("Level matrix:\n{0}\n".format(score_matrix))
+    print("Level matrix:\n{0}\n".format(score_matrix))
     return score_matrix
 
-def create_random_matrix(logger, data, ids_list):
+def create_random_matrix(data, ids_list):
     random_scores = numpy.random.rand(len(ids_list), len(ids_list))
     mask = 1 - numpy.diag([1]*len(ids_list))
-    logger.info("Random score:\n{0}\n".format(random_scores))
+    print("Random score:\n{0}\n".format(random_scores))
     return random_scores*mask
 
-def get_ids_list(logger, data):
-    ids_list = data["students"][0].keys()
+def get_ids_list(data):
+    ids_list = data["students"].keys()
     for member in ids_list:
         if "id" not in member:
             ids_list.remove(member)
-    logger.info("ids list:\n{0}".format(ids_list))
+    print("ids list:\n{0}".format(ids_list))
     ids_list = [curr_id.encode('ascii', 'ignore') for curr_id in ids_list]
     return ids_list
 
 
-def get_group_data(logger, data):
-    logger.info("Size of each group: {0}\n".format(data["group"]["size"]))
+def get_group_data(data):
+    print("Size of each group: {0}\n".format(data["group"]["size"]))
     return data["group"]["size"]
 
-def get_weights_dict(logger, data):
+def get_weights_dict(data):
     return data["group"]["weights"]
 
-def get_scores_dictionary(logger, data, weights_dict, ids_list):
+def get_scores_dictionary(data, weights_dict, ids_list):
     scores_dict = dict()
     for model in weights_dict.keys():
         func_name = "create_{0}_matrix".format(model)
-        data_matrix = globals()[func_name](logger, data, ids_list)
+        data_matrix = globals()[func_name](data, ids_list)
         func_name = "calc_{0}_score_matrix".format(model)
-        scores_dict[model] = globals()[func_name](logger, data_matrix)
+        scores_dict[model] = globals()[func_name](data_matrix)
     return scores_dict
 
 
 def run_grouper(data):
 
-    logger_obj = logClass.Logger("grouper_log.txt")
-    logger = logger_obj.create_logger()
+    ids_list = get_ids_list(data)
+    group_size = get_group_data(data)
+    weights_dict = get_weights_dict(data)
 
-    ids_list = get_ids_list(logger, data)
-    group_size = get_group_data(logger, data)
-    weights_dict = get_weights_dict(logger, data)
+    scores_dict = get_scores_dictionary(data, weights_dict, ids_list)
 
-    scores_dict = get_scores_dictionary(logger, data, weights_dict, ids_list)
-
-    total_score_matrix = calc_total_score_according_weights(logger, scores_dict, weights_dict)
+    total_score_matrix = calc_total_score_according_weights(scores_dict, weights_dict)
 
     amount_of_groups, amount_of_students_per_group = calc_amount_of_groups(ids_list, group_size)
     groups_list = create_empty_groups_list(amount_of_groups)
-    allocate_student_to_groups(logger, data, ids_list, groups_list, total_score_matrix)
+    allocate_student_to_groups(data, ids_list, groups_list, total_score_matrix)
 
     return groups_list
