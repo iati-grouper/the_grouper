@@ -5,7 +5,7 @@ import path from 'path';
 import StudentRoutes from './routes/Students';
 import GroupForm from './routes/GroupForm';
 
-const indexHtml: string = path.resolve(__dirname, '../index.html');
+const indexHtml: string = path.resolve(__dirname, '../dist/index.html');
 
 class App {
   public express: express.Application;
