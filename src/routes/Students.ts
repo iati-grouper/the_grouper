@@ -1,5 +1,5 @@
-import express, { Request, Response } from 'express';
-import http from 'http';
+import express, {Request, Response} from 'express';
+import Axios from 'axios';
 
 class StudentRoutes {
   public express: express.Router;
@@ -10,20 +10,21 @@ class StudentRoutes {
   }
 
   private mountRoutes(): void {
-    this.express.get('', (req: Request, res: Response) => {
+    this.express.get('', async (req: Request, res: Response) => {
 
-      http.get({
-        agent: false,  // create a new agent just for this one request
-        hostname: 'localhost',
-        path: '/students',
-        port: 3004,
-      }, (response: any) => {
-        response.on('data', (chunk: any) => {
-          res.send(chunk.toString());
-        });
-      });
+      try {
+        const result = await Axios.get<{ data: IStudent[] }>('http://localhost:3004/students');
+        res
+          .status(200)
+          .send(result.data);
+      } catch (error: any) {
+        res
+          .status(500)
+          .send({message: 'Could not retrieve data from db', error});
+      }
     });
   }
+
 }
 
 export default new StudentRoutes().express;
