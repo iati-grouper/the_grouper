@@ -8,7 +8,7 @@ const plugins = (baseConfig.plugins || []).concat([
   })
 ]);
 
-module.exports = Object.assign({
+module.exports = Object.assign({}, baseConfig, {
   mode: 'production',
   plugins: plugins,
-}, baseConfig);
+});

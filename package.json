@@ -38,7 +38,7 @@
     "webpack-dev-server": "^3.1.1"
   },
   "scripts": {
-    "start": "ts-node --project config/tsconfig.server.json src/index.ts",
+    "start": "ts-node src/index.ts",
     "build": "webpack --config config/webpack.dev.js",
     "build:watch": "webpack-dev-server --config config/webpack.dev-server.js",
     "build:prod": "webpack --config config/webpack.prod.js",
