@@ -37,7 +37,7 @@ class GrouperForm extends React.Component<IFormProps, IFormState> {
         <div className="student-list-wrapper">
           <Paper className="student-list">
             <List>
-              <Subheader>Students In Class</Subheader>
+              <Subheader>Students In Class 1-B</Subheader>
               {
                 this.props.students.map((s: IStudent) => {
                   return (

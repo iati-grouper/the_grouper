@@ -37,9 +37,5 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: 'assets/index.html',
-      alwaysWriteToDisk: true
-    })
   ]
 };
